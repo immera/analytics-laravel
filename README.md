@@ -1,4 +1,4 @@
-# Very short description of the package
+# Interface to access Analytics API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/immera/analytics.svg?style=flat-square)](https://packagist.org/packages/immera/analytics)
 [![Total Downloads](https://img.shields.io/packagist/dt/immera/analytics.svg?style=flat-square)](https://packagist.org/packages/immera/analytics)
@@ -40,7 +40,7 @@ If you discover any security related issues, please email tarkarvishal@gmail.com
 
 ## Credits
 
--   [Vishal Tarkar](https://github.com/immera)
+-   [Immera](https://github.com/immera)
 -   [All Contributors](../../contributors)
 
 ## License
