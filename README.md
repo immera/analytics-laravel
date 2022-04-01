@@ -1,4 +1,4 @@
-# Very short description of the package
+# An Interface to Analytics APIs
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/immera/analytics-laravel.svg?style=flat-square)](https://packagist.org/packages/immera/analytics-laravel)
 [![Total Downloads](https://img.shields.io/packagist/dt/immera/analytics-laravel.svg?style=flat-square)](https://packagist.org/packages/immera/analytics-laravel)
@@ -40,8 +40,7 @@ If you discover any security related issues, please email vishal@twopeople.compa
 
 ## Credits
 
--   [Akuma](https://github.com/immera)
--   [All Contributors](../../contributors)
+-   [Immera](https://github.com/immera)
 
 ## License
 
