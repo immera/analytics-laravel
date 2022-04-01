@@ -1,17 +1,17 @@
 {
-    "name": "immera/analytics-laravel",
-    "description": "Provide Interface to Analytics APIs",
+    "name": "immera/analytics",
+    "description": "Immera Laravel Analytics",
     "keywords": [
         "immera",
-        "analytics-laravel"
+        "analytics"
     ],
-    "homepage": "https://github.com/immera/analytics-laravel",
+    "homepage": "https://github.com/immera/analytics",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Akuma",
-            "email": "vishal@twopeople.company",
+            "name": "Vishal Tarkar",
+            "email": "tarkarvishal@gmail.com",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Immera\\AnalyticsLaravel\\": "src"
+            "Immera\\Analytics\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Immera\\AnalyticsLaravel\\Tests\\": "tests"
+            "Immera\\Analytics\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Immera\\AnalyticsLaravel\\AnalyticsLaravelServiceProvider"
+                "Immera\\Analytics\\AnalyticsServiceProvider"
             ],
             "aliases": {
-                "AnalyticsLaravel": "Immera\\AnalyticsLaravel\\AnalyticsLaravelFacade"
+                "Analytics": "Immera\\Analytics\\AnalyticsFacade"
             }
         }
     }
