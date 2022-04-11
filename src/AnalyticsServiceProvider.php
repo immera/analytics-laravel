@@ -14,14 +14,14 @@ class AnalyticsServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'analytics');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'analytics');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'analytics');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('analytics.php'),
+                __DIR__ . '/../config/immera-analytics.php' => config_path('immera-analytics.php'),
             ], 'config');
 
             // Publishing the views.
@@ -35,9 +35,9 @@ class AnalyticsServiceProvider extends ServiceProvider
             ], 'assets');*/
 
             // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/analytics'),
-            ], 'lang');*/
+            $this->publishes([
+                __DIR__ . '/../resources/lang' => resource_path('lang/vendor/analytics'),
+            ], 'lang');
 
             // Registering package commands.
             // $this->commands([]);
@@ -50,7 +50,7 @@ class AnalyticsServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'analytics');
+        $this->mergeConfigFrom(__DIR__ . '/../config/immera-analytics.php', 'immera-analytics');
 
         // Register the main class to use with the facade
         $this->app->singleton('analytics', function () {
