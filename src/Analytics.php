@@ -15,17 +15,15 @@ class Analytics
 
     public static function getData(array $filter = [])
     {
-        $response = Http::accept('application/json')->withHeaders([
+        return Http::accept('application/json')->withHeaders([
             'Content-Type' => 'application/json',
             'client_id' => config('immera-analytics.client_id'),
         ])->withBody(json_encode($filter), 'application/json')->post(self::getDataUrl());
-
-        return $response;
     }
 
     public static function storeData($data)
     {
-        $response = Http::accept('application/json')->withHeaders([
+        return Http::accept('application/json')->withHeaders([
             'Content-Type' => 'application/json',
             'client_id' => config('immera-analytics.client_id'),
         ])->withBody(json_encode($data), 'application/json')->post(self::storeDataUrl());
@@ -33,11 +31,11 @@ class Analytics
 
     public function getDataUrl()
     {
-        return $this->baseUrl . 'getData';
+        return config('analytics.base_url') . 'getData';
     }
 
     public function storeDataUrl()
     {
-        return $this->baseUrl . 'storeData';
+        return config('analytics.base_url') . 'storeData';
     }
 }
