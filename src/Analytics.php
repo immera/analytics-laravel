@@ -10,7 +10,7 @@ class Analytics
 
     public function __construct()
     {
-        $this->baseUrl = config('analytics.base_url');
+        $this->baseUrl = config('immera-analytics.base_url');
     }
 
     public static function getData(array $filter = [])
@@ -31,11 +31,11 @@ class Analytics
 
     public function getDataUrl()
     {
-        return config('analytics.base_url') . 'getData';
+        return config('immera-analytics.base_url') . 'getData';
     }
 
     public function storeDataUrl()
     {
-        return config('analytics.base_url') . 'storeData';
+        return config('immera-analytics.base_url') . 'storeData';
     }
 }
