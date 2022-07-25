@@ -6,36 +6,42 @@ use Illuminate\Support\Facades\Http;
 
 class Analytics
 {
-    private $baseUrl;
-
-    public function __construct()
+    public static function query()
     {
-        $this->baseUrl = config('immera-analytics.base_url');
+        return new AnalyticsQuery();
     }
 
-    public static function getData(array $filter = [])
+    public static function fetch($data = [])
     {
-        return Http::accept('application/json')->withHeaders([
-            'Content-Type' => 'application/json',
-            'client_id' => config('immera-analytics.client_id'),
-        ])->withBody(json_encode($filter), 'application/json')->post(self::getDataUrl());
+        if ($data instanceof AnalyticsQuery) {
+            $data = $data->toArray();
+        }
+
+        return Http::withoutVerifying()
+            ->acceptJson()
+            ->asJson()
+            ->withHeaders(['key' => config('immera.analytics.serial_key')])
+            ->withBody(json_encode($data), 'application/json')
+            ->post(config('immera.analytics.base_url').'api/fetch');
     }
 
-    public static function storeData($data)
+    public static function store(array $data)
     {
-        return Http::accept('application/json')->withHeaders([
-            'Content-Type' => 'application/json',
-            'client_id' => config('immera-analytics.client_id'),
-        ])->withBody(json_encode($data), 'application/json')->post(self::storeDataUrl());
+        return Http::withoutVerifying()
+            ->acceptJson()
+            ->asJson()
+            ->withHeaders(['key' => config('immera.analytics.serial_key')])
+            ->withBody(json_encode($data), 'application/json')
+            ->post(config('immera.analytics.base_url').'api/store');
     }
 
-    public function getDataUrl()
+    public static function fetchJson($data = [])
     {
-        return config('immera-analytics.base_url') . 'getData';
+        return self::fetch($data)->json();
     }
 
-    public function storeDataUrl()
+    public static function storeJson(array $data)
     {
-        return config('immera-analytics.base_url') . 'storeData';
+        return self::store($data)->json();
     }
 }

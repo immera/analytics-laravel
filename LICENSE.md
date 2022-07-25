@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) Vishal Tarkar
+Copyright (c) immera.io
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

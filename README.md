@@ -17,7 +17,22 @@ composer require immera/analytics
 ## Usage
 
 ```php
-// Usage description here
+// Store data
+Analytics::store([
+    'action' => 'test',
+    'project' => 'boilerplate',
+])
+```
+
+```php
+// Fetch data
+$result = Analytics::query()
+    ->match(['action' => 'test'])
+    ->project(['action' => 1, 'project' => 1])
+    ->limit(1)
+    ->fetchJson();
+
+dd($result);
 ```
 
 ### Testing
@@ -36,7 +51,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email tarkarvishal@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email antonioalmeida@immera.io instead of using the issue tracker.
 
 ## Credits
 
