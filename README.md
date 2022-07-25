@@ -21,8 +21,8 @@ ANALYTICS_SERIAL_KEY=
 
 ## Usage
 
+#### Store data
 ```php
-// Store data
 Analytics::store([
     'action' => 'test',
     'project' => 'analytics',
@@ -31,8 +31,8 @@ Analytics::store([
 ])
 ```
 
+#### Fetch data
 ```php
-// Fetch data
 $result = Analytics::query()
     ->match(['action' => 'test'])
     ->project(['action' => 1, 'project' => 1])
@@ -40,8 +40,8 @@ $result = Analytics::query()
     ->fetchJson();
 ```
 
+#### Count actions by hour
 ```php
-// Count actions by hour
 $result = Analytics::query()
     ->match([
         'action' => 'test',
@@ -68,8 +68,8 @@ $result = Analytics::query()
     ->fetchJson();
 ```
 
+#### Get Total price and average quantity by month, order desc
 ```php
-// Get Total price and average quantity by month, order desc
 $result = Analytics::query()
     ->match([
         'action' => 'test',
