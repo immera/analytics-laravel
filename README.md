@@ -21,23 +21,77 @@ ANALYTICS_SERIAL_KEY=
 
 ## Usage
 
+#### Store data
 ```php
-// Store data
 Analytics::store([
     'action' => 'test',
-    'project' => 'boilerplate',
+    'project' => 'analytics',
+    'price' => rand(0, 10000) / 100,
+    'quantity' => rand(0, 8),
 ])
 ```
 
+#### Fetch data
 ```php
-// Fetch data
 $result = Analytics::query()
     ->match(['action' => 'test'])
     ->project(['action' => 1, 'project' => 1])
     ->limit(1)
     ->fetchJson();
+```
 
-dd($result);
+#### Count actions by hour
+```php
+$result = Analytics::query()
+    ->match([
+        'action' => 'test',
+        'created_at.year' => 2022,
+    ])
+    ->group([
+        '_id' => [
+            'year' => '$created_at.year',
+            'month' => '$created_at.month',
+            'day' => '$created_at.day',
+            'hour' => '$created_at.hour',
+        ],
+        'count' => [
+            '$sum' => 1,
+        ],
+    ])
+    ->sort([
+        '_id.year' => -1,
+        '_id.month' => -1,
+        '_id.day' => -1,
+        '_id.hour' => -1,
+    ])
+    ->limit(100)
+    ->fetchJson();
+```
+
+#### Get Total price and average quantity by month, order desc
+```php
+$result = Analytics::query()
+    ->match([
+        'action' => 'test',
+    ])
+    ->group([
+        '_id' => [
+            'year' => '$created_at.year',
+            'month' => '$created_at.month',
+        ],
+        'totalPrice' => [
+            '$sum' => '$price',
+        ],
+        'averageQuantity' => [
+            '$avg' => '$quantity',
+        ],
+    ])
+    ->sort([
+        '_id.year' => -1,
+        '_id.month' => -1,
+    ])
+    ->limit(100)
+    ->fetchJson();
 ```
 
 ### Testing
