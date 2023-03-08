@@ -24,7 +24,7 @@ class AnalyticsServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/immera/analytics.php', 'immera/analytics');
+        $this->mergeConfigFrom(__DIR__.'/../config/immera/analytics.php', 'immera.analytics');
 
         // Register the main class to use with the facade
         $this->app->singleton('analytics', function () {
